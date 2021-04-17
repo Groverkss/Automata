@@ -7,7 +7,16 @@ from Scanner import Scanner
 
 
 class Parser:
-    """Parses a given string into a Abstract Syntax Tree"""
+    """
+    Parses a given string into a Abstract Syntax Tree
+
+    Grammer:
+        expression -> union
+        union -> concat ( "+" concat )*
+        concat -> kleene ( "#" kleene )*
+        kleene -> literal ("*")*
+        literal -> alpha | "(" expression ")"
+    """
 
     def __init__(self):
         pass
@@ -90,4 +99,4 @@ if __name__ == "__main__":
     tokens = scanner.scan(regex)
 
     parser = Parser()
-    print(parser.parse(tokens))
+    parser.parse(tokens).eval().pprint()
