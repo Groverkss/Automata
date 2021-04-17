@@ -99,4 +99,7 @@ if __name__ == "__main__":
     tokens = scanner.scan(regex)
 
     parser = Parser()
-    parser.parse(tokens).eval().pprint()
+    nfa = parser.parse(tokens).eval()
+    nfa.convert_to_dfa()
+    print("DFA: ")
+    nfa.pprint()

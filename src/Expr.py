@@ -105,6 +105,7 @@ class Kleene(Expr):
         eval_expr.transition_matrix = get_unique(
             eval_expr.transition_matrix
             + [(eval_expr.final_states[0], "$", eval_expr.start_states[0])]
+            + [(eval_expr.start_states[0], "$", eval_expr.final_states[0])]
         )
 
         return eval_expr
